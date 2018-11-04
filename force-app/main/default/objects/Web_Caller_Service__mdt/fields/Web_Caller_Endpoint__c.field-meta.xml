@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Web_Caller_Endpoint__c</fullName>
+    <description>Related End Point for Service</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Related End Point for Service</inlineHelpText>
+    <label>Web Caller Endpoint</label>
+    <referenceTo>Web_Caller_Endpoint__mdt</referenceTo>
+    <relationshipLabel>Web Caller Services</relationshipLabel>
+    <relationshipName>Web_Caller_Services</relationshipName>
+    <required>true</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

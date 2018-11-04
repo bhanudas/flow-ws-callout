@@ -28,7 +28,7 @@ public class WebCaller {
     */
     public interface Outbound {
 
-        public void call ();
+        void call ();
 
     }
 }

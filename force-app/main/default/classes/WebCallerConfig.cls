@@ -13,8 +13,8 @@ public with sharing class WebCallerConfig {
     private boolean isValid;
     private string serviceAddress;
     private string endPointPath;
-    public string port;
-    public string protocol;
+    private string port;
+    private string protocol;
 
     /*******************************************************************************************************
     * @description Constructor.  Will look up an end point and load related configuration data
@@ -33,6 +33,7 @@ public with sharing class WebCallerConfig {
     }
 
     public string fullyQualifiedURL () {
-        return this.protocol + '://' + this.serviceAddress + '/' + this.endPointPath;
+        string returnUrl = this.protocol + '://' + this.serviceAddress + '/' + this.endPointPath + ':' + port;
+        return returnUrl;
     }
 }
