@@ -1,17 +1,29 @@
-public with sharing class WebCaller_FLOW {
+public class WebCallerFlow {
     
     @InvocableMethod ( label='Web Service Outbound Caller' description='Web Service Outbound Caller' )
-	public static List < boolean > webCallerFlowInterface ( List < flowDataStructure > inputData ) {
+	public static List < boolean > webCallerFlowInterface ( List < FlowDataStructure > inputData ) {
         
         List < boolean > returnList = new List < boolean > ();
 
 		System.debug ( 'flow output - entry' );
 
         // for each FlowDataStructure sent in, process a Web Caller routine
-        for ( flowDataStructure fds : inputData ) {
+        for ( FlowDataStructure fds : inputData ) {
             System.debug ( 'evaluating fds' );
             for ( string key : fds.getKeys ()) {
                 System.debug ( 'key: ' + key + ' value:  ' + fds.get ( key ));
+            }
+
+            WebCallerConfig wcc = new WebCallerConfig ();
+
+            try {
+                // load the config
+                wcc.load ( fds.serviceId );
+                WebCaller wc = new WebCaller ( wcc );
+                wc.executeOutbound ( fds );
+            } catch ( Exception e ) {
+                returnList.add ( false );
+                return returnList;
             }
 
             returnList.add ( true );
@@ -22,7 +34,7 @@ public with sharing class WebCaller_FLOW {
         return returnList;
 	}
 
-    public class flowDataStructure {
+    public class FlowDataStructure {
 
         @InvocableVariable public List < string > keys;
         @InvocableVariable public List < string > values;

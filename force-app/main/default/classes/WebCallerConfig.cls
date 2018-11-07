@@ -17,6 +17,7 @@ public with sharing class WebCallerConfig {
     private string protocol;
     private string method;
     private string data;
+    private string apexOutboundClass;
 
     /*******************************************************************************************************
     * @description Constructor.  Will look up an end point and load related configuration data
@@ -34,7 +35,15 @@ public with sharing class WebCallerConfig {
 
         try {
             // query the Service Record 
-            Web_Caller_Service__mdt service = [ SELECT ID, QualifiedApiName, Web_Caller_Endpoint__c, Data__c, Method__c, Path__c FROM Web_Caller_Service__mdt WHERE QualifiedApiName =: serviceId ];
+            Web_Caller_Service__mdt service = [ SELECT ID
+                                                    , QualifiedApiName
+                                                    , Web_Caller_Endpoint__c
+                                                    , Data__c
+                                                    , Method__c
+                                                    , Path__c 
+                                                    , Apex_Outbound_Class__c   
+                                                FROM Web_Caller_Service__mdt 
+                                                WHERE QualifiedApiName =: serviceId ];
 
             // query the Endpoint record
             Web_Caller_Endpoint__mdt endPoint = [ SELECT ID, Address__c, Port__c, Protocol__c FROM Web_Caller_Endpoint__mdt WHERE ID =: service.Web_Caller_Endpoint__c ];
@@ -46,6 +55,7 @@ public with sharing class WebCallerConfig {
             this.protocol = endPoint.Protocol__c;
             this.data = service.Data__c;
             this.method = service.Method__c;
+            this.apexOutboundClass = service.Apex_Outbound_Class__c;
 
             // validate
             this.isValid = true;
@@ -69,5 +79,9 @@ public with sharing class WebCallerConfig {
 
     public string getData () {
         return this.data;
+    }
+
+    public string getApexOutboundClass () {
+        return this.apexOutboundClass;
     }
 }

@@ -12,6 +12,8 @@
 
 public class WebCaller {
 
+    private WebCallerConfig config;
+
     /*******************************************************************************************************
     * @description Constructor
     * @param config Instance of WebCallerConfig to handle configuration details
@@ -23,12 +25,16 @@ public class WebCaller {
 
     }
 
+    public void executeOutbound ( WebCallerFlow.FlowDataStructure fds ) {
+
+    }
+
     /*******************************************************************************************************
     * @description Public interface for web service outbound call implementations
     */
     public interface Outbound {
 
-        void call ();
+        void call ( WebCallerConfig wcc );
 
     }
 }

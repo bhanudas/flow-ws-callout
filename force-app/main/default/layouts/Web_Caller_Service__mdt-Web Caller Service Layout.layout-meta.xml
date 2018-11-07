@@ -14,6 +14,10 @@
                 <behavior>Required</behavior>
                 <field>Web_Caller_Endpoint__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>APEX_Outbound_Class__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
