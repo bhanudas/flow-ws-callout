@@ -77,6 +77,10 @@ public with sharing class WebCallerConfig {
         return returnUrl;
     }
 
+    public string httpMethod () {
+        return this.method;
+    }
+
     public string getData () {
         return this.data;
     }

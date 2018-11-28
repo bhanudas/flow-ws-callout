@@ -25,8 +25,33 @@ public class WebCaller {
 
     }
 
+    /*******************************************************************************************************
+    * @description executeOutbound
+    * @param WebCallerFlow.FlowDataStructure instance of a Flow Data Structure
+    * @return void
+    * @example
+    * executeOutbound ()
+    */
     public void executeOutbound ( WebCallerFlow.FlowDataStructure fds ) {
 
+        // load config settings
+        this.config.load ( fds.getServiceId ());
+
+        // create HTTP/Request items
+        Http h = new Http ();
+        HttpRequest req = new HttpRequest ();
+        req.setEndpoint ( this.config.fullyQualifiedURL ());
+        req.setMethod ( this.config.httpMethod ());
+
+        // make request
+        HttpResponse resp;
+        try {
+            resp = h.send ( req );
+        } catch ( Exception e ) {
+            throw new WebCallerException ( 'WebCaller.executeOutbound ()', '000', e );
+        }
+
+        // inspect resp and process
     }
 
     /*******************************************************************************************************

@@ -60,6 +60,10 @@ public class WebCallerFlow {
                 return null;
             }
         }
+
+        public string getServiceId () {
+            return this.serviceId;
+        }
     }
 
 }
