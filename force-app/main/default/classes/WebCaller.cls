@@ -55,7 +55,7 @@ public class WebCaller {
     }
 
     /*******************************************************************************************************
-    * @description Public interface for web service outbound call implementations
+    * @description Public interface for custom web service outbound call implementations
     */
     public interface Outbound {
 
