@@ -1,0 +1,7 @@
+project:
+    name: flow-ws-callout
+    package:
+        name:  flow-ws-callout
+        api_version: '43.0'
+
+

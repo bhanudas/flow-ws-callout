@@ -1,0 +1,10 @@
+{
+  "orgName": "flow-ws-callout - Dev Org",
+  "edition": "Developer",
+  "orgPreferences" : {
+    "enabled": [
+      "S1DesktopEnabled",
+      "ChatterEnabled"
+    ]
+  }
+}
